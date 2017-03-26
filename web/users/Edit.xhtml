@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UsersEditDlg" widgetVar="UsersEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditUsersTitle}">
+            <h:form id="UsersEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{usersController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditUsersLabel_matricule}" for="matricule" />
+                        <p:inputText id="matricule" value="#{usersController.selected.matricule}" title="#{bundle.EditUsersTitle_matricule}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_matricule}"/>
+                        <p:outputLabel value="#{bundle.EditUsersLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{usersController.selected.nom}" title="#{bundle.EditUsersTitle_nom}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_nom}"/>
+                        <p:outputLabel value="#{bundle.EditUsersLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{usersController.selected.prenom}" title="#{bundle.EditUsersTitle_prenom}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_prenom}"/>
+                        <p:outputLabel value="#{bundle.EditUsersLabel_poste}" for="poste" />
+                        <p:inputText id="poste" value="#{usersController.selected.poste}" title="#{bundle.EditUsersTitle_poste}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_poste}"/>
+                        <p:outputLabel value="#{bundle.EditUsersLabel_dateemb}" for="dateemb" />
+                        <p:calendar id="dateemb" pattern="MM/dd/yyyy" value="#{usersController.selected.dateemb}" title="#{bundle.EditUsersTitle_dateemb}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_dateemb}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditUsersLabel_statut}" for="statut" />
+                        <p:inputText id="statut" value="#{usersController.selected.statut}" title="#{bundle.EditUsersTitle_statut}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_statut}"/>
+                        <p:outputLabel value="#{bundle.EditUsersLabel_salaire}" for="salaire" />
+                        <p:inputText id="salaire" value="#{usersController.selected.salaire}" title="#{bundle.EditUsersTitle_salaire}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_salaire}"/>
+                        <p:outputLabel value="#{bundle.EditUsersLabel_telephone}" for="telephone" />
+                        <p:inputText id="telephone" value="#{usersController.selected.telephone}" title="#{bundle.EditUsersTitle_telephone}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_telephone}"/>
+                        <p:outputLabel value="#{bundle.EditUsersLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{usersController.selected.email}" title="#{bundle.EditUsersTitle_email}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_email}"/>
+                        <p:outputLabel value="#{bundle.EditUsersLabel_datenais}" for="datenais" />
+                        <p:calendar id="datenais" pattern="MM/dd/yyyy" value="#{usersController.selected.datenais}" title="#{bundle.EditUsersTitle_datenais}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_datenais}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditUsersLabel_lieunais}" for="lieunais" />
+                        <p:inputText id="lieunais" value="#{usersController.selected.lieunais}" title="#{bundle.EditUsersTitle_lieunais}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_lieunais}"/>
+                        <p:outputLabel value="#{bundle.EditUsersLabel_gsanguin}" for="gsanguin" />
+                        <p:inputText id="gsanguin" value="#{usersController.selected.gsanguin}" title="#{bundle.EditUsersTitle_gsanguin}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_gsanguin}"/>
+                        <p:outputLabel value="#{bundle.EditUsersLabel_sexe}" for="sexe" />
+                        <p:inputText id="sexe" value="#{usersController.selected.sexe}" title="#{bundle.EditUsersTitle_sexe}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_sexe}"/>
+                        <p:outputLabel value="#{bundle.EditUsersLabel_niveauetude}" for="niveauetude" />
+                        <p:inputText id="niveauetude" value="#{usersController.selected.niveauetude}" title="#{bundle.EditUsersTitle_niveauetude}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_niveauetude}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{usersController.update}" value="#{bundle.Save}" update="display,:UsersListForm:datalist,:growl" oncomplete="handleSubmit(args, 'UsersEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="UsersEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
